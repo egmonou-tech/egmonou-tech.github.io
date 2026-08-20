@@ -1,1 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>App & Web Development | iOS, Android & Websites</title>
+
+    <meta name="description"
+          content="We design and develop iOS apps, Android apps, websites and digital products. From idea and UI/UX to development, APIs, payments, AI and launch.">
+
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title"
+          content="We Turn Ideas Into Digital Products">
+
+    <meta property="og:description"
+          content="iOS apps, Android apps, websites and digital products - from idea to launch.">
+
+    <meta property="og:type" content="website">
+
+    <meta name="theme-color"
+          content="#0b0b0d"
+          media="(prefers-color-scheme: dark)">
+
+    <meta name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)">
+
+    <style>
+        :root {
+            --background: #ffffff;
+            --secondary-background: #f5f5f7;
+            --card: rgba(255,255,255,.72);
+            --text: #1d1d1f;
+            --secondary-text: #6e6e73;
+            --border: rgba(0,0,0,.08);
+            --accent: #0071e3;
+            --shadow: 0 20px 60px rgba(0,0,0,.08);
+            --max-width: 1180px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #000000;
+                --secondary-background: #101012;
+                --card: rgba(28,28,30,.72);
+                --text: #f5f5f7;
+                --secondary-text: #a1a1a6;
+                --border: rgba(255,255,255,.10);
+                --accent: #2997ff;
+                --shadow: 0 20px 60px rgba(0,0,0,.35);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "SF Pro Text",
+                "Helvetica Neue",
+                Arial,
+                sans-serif;
+
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img,
+        video {
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(calc(100% - 40px), var(--max-width));
+            margin-inline: auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: color-mix(
+                in srgb,
+                var(--background) 78%,
+                transparent
+            );
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: var(--secondary-text);
+            transition: color .2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* BUTTONS */
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            min-height: 48px;
+            padding: 0 22px;
+
+            border-radius: 999px;
+
+            background: var(--accent);
+            color: white;
+
+            font-weight: 600;
+            font-size: 15px;
+
+            transition:
+                transform .2s ease,
+                opacity .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            opacity: .92;
+        }
+
+        .button.secondary {
+            background: var(--secondary-background);
+            color: var(--text);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 78vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 0;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: clamp(50px, 8vw, 96px);
+            line-height: .98;
+            letter-spacing: -.055em;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 30px auto 34px;
+
+            font-size: clamp(18px, 2vw, 23px);
+            color: var(--secondary-text);
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            margin: 0 0 14px;
+
+            font-size: clamp(36px, 5vw, 60px);
+            line-height: 1.05;
+            letter-spacing: -.045em;
+        }
+
+        .section-header p {
+            margin: 0;
+
+            color: var(--secondary-text);
+            font-size: 18px;
+        }
+
+        /* WORK */
+
+        #work {
+            background: var(--secondary-background);
+        }
+
+        .projects {
+            display: grid;
+            gap: 34px;
+        }
+
+        .project {
+            background: var(--background);
+
+            border: 1px solid var(--border);
+            border-radius: 34px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            min-height: 620px;
+        }
+
+        .project-info {
+            padding: clamp(35px, 6vw, 70px);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .app-icon {
+            width: 82px;
+            height: 82px;
+
+            border-radius: 19px;
+            object-fit: cover;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,.15);
+
+            margin-bottom: 26px;
+        }
+
+        .project-info h3 {
+            margin: 0 0 8px;
+
+            font-size: 42px;
+            letter-spacing: -.04em;
+        }
+
+        .project-tagline {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: var(--secondary-text);
+            font-size: 16px;
+            margin: 0 0 25px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            margin-bottom: 28px;
+        }
+
+        .feature {
+            padding: 7px 11px;
+
+            border-radius: 999px;
+
+            background: var(--secondary-background);
+
+            color: var(--secondary-text);
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .project-video {
+            padding: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 40%,
+                    rgba(255,149,0,.17),
+                    transparent 55%
+                ),
+                var(--secondary-background);
+        }
+
+        .phone {
+            width: min(310px, 100%);
+            padding: 9px;
+
+            background: #111;
+            border-radius: 48px;
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,.3),
+                inset 0 0 0 1px rgba(255,255,255,.12);
+        }
+
+        .phone video {
+            width: 100%;
+            display: block;
+
+            border-radius: 40px;
+
+            aspect-ratio: 9 / 19.5;
+            object-fit: cover;
+
+            background: #000;
+        }
+
+        /* SERVICES */
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 24px;
+
+            background: var(--card);
+        }
+
+        .service-icon {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .service h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .service p {
+            margin: 0;
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+
+        /* CAPABILITIES */
+
+        .capabilities {
+            background: var(--secondary-background);
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .capability {
+            padding: 18px 20px;
+
+            background: var(--background);
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* PROCESS */
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .process-step {
+            position: relative;
+        }
+
+        .process-number {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .process-step h3 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        /* CTA */
+
+        .cta {
+            padding: 130px 0;
+
+            text-align: center;
+
+            background: var(--secondary-background);
+        }
+
+        .cta-inner {
+            max-width: 780px;
+            margin-inline: auto;
+        }
+
+        .cta h2 {
+            margin: 0;
+
+            font-size: clamp(44px, 7vw, 76px);
+            line-height: 1;
+            letter-spacing: -.05em;
+        }
+
+        .cta p {
+            margin: 25px auto 30px;
+
+            color: var(--secondary-text);
+            font-size: 19px;
+        }
+
+        .email {
+            display: block;
+
+            margin-top: 20px;
+
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 28px 0;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--secondary-text);
+            font-size: 13px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .project-video {
+                min-height: 600px;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .capability-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 620px) {
+
+            .container {
+                width: min(calc(100% - 28px), var(--max-width));
+            }
+
+            .nav-links a:not(.nav-contact) {
+                display: none;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 70px 0;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .project {
+                border-radius: 25px;
+            }
+
+            .project-info {
+                padding: 32px 24px;
+            }
+
+            .project-info h3 {
+                font-size: 34px;
+            }
+
+            .project-video {
+                padding: 35px 25px;
+                min-height: auto;
+            }
+
+            .phone {
+                width: 270px;
+            }
+
+            .service-grid,
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+
+    <!-- SEO Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "YOUR STUDIO NAME",
+        "description": "iOS, Android, website and digital product development.",
+        "email": "mailto:speakrclearly@gmail.com",
+        "areaServed": "Worldwide",
+        "serviceType": [
+            "iOS App Development",
+            "Android App Development",
+            "Website Development",
+            "Web Application Development",
+            "UI UX Design",
+            "Backend Development"
+        ]
+    }
+    </script>
+</head>
+
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+    <div class="container nav-content">
+
+        <a href="#" class="logo">
+            YOUR STUDIO
+        </a>
+
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+
+            <a
+                href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry"
+                class="button nav-contact"
+            >
+                Contact
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="container hero-inner">
+
+        <div class="eyebrow">
+            Digital Product Development
+        </div>
+
+        <h1>
+            We turn ideas into digital products.
+        </h1>
+
+        <p>
+            We design and develop iOS apps, Android apps,
+            websites and connected digital experiences -
+            from the first idea to launch.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#work" class="button">
+                See Our Work
+            </a>
+
+            <a
+                href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry"
+                class="button secondary"
+            >
+                Start a Project
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- FEATURED WORK -->
+
+<section id="work">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="eyebrow">
+                Featured Work
+            </div>
+
+            <h2>
+                Products we've built.
+            </h2>
+
+            <p>
+                A selection of iOS products we have designed,
+                developed and prepared for real users.
+            </p>
+
+        </div>
+
+
+        <!-- SHADEPILOT -->
+
+        <article class="project">
+
+            <div class="project-content">
+
+                <div class="project-info">
+
+                    <!--
+                    Replace with your real app icon:
+                    <img src="images/shadepilot-icon.png"
+                         alt="ShadePilot app icon"
+                         class="app-icon">
+                    -->
+
+                    <h3>ShadePilot</h3>
+
+                    <div class="project-tagline">
+                        Stay safer in the heat.
+                    </div>
+
+                    <p class="project-description">
+                        ShadePilot combines weather conditions,
+                        UV information, heat risk, hydration tools,
+                        sun exposure tracking and practical daily
+                        recommendations in a clean mobile experience.
+                    </p>
+
+                    <div class="features">
+                        <span class="feature">Heat Risk</span>
+                        <span class="feature">UV Index</span>
+                        <span class="feature">Weather</span>
+                        <span class="feature">Hydration</span>
+                        <span class="feature">Sun Safety</span>
+                    </div>
+
+                    <!-- Replace # with your real App Store URL -->
+
+                    <div>
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener"
+                            class="button"
+                        >
+                            View on the App Store
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <div class="project-video">
+
+                    <div class="phone">
+
+                        <!--
+                        Replace videos/shadepilot.mp4
+                        with your actual demo video.
+                        -->
+
+                        <video
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            poster="images/shadepilot-poster.jpg"
+                            aria-label="ShadePilot app demonstration"
+                        >
+                            <source
+                                src="videos/shadepilot.mp4"
+                                type="video/mp4"
+                            >
+                        </video>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!--
+        COPY THE PROJECT ABOVE FOR EACH ADDITIONAL APP.
+        -->
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="eyebrow">
+                What We Build
+            </div>
+
+            <h2>
+                One team. Complete products.
+            </h2>
+
+            <p>
+                From a focused mobile utility to a complete
+                connected platform, we build around the needs
+                of your product.
+            </p>
+
+        </div>
+
+
+        <div class="service-grid">
+
+            <div class="service">
+                <div class="service-icon">iOS</div>
+
+                <h3>iOS Apps</h3>
+
+                <p>
+                    Native applications for iPhone and iPad
+                    with polished, modern user experiences.
+                </p>
+            </div>
+
+
+            <div class="service">
+                <div class="service-icon">Android</div>
+
+                <h3>Android Apps</h3>
+
+                <p>
+                    Modern Android applications designed for
+                    phones, tablets and connected services.
+                </p>
+            </div>
+
+
+            <div class="service">
+                <div class="service-icon">Web</div>
+
+                <h3>Websites</h3>
+
+                <p>
+                    Fast, responsive websites and web
+                    applications for desktop and mobile.
+                </p>
+            </div>
+
+
+            <div class="service">
+                <div class="service-icon">API</div>
+
+                <h3>Backend & Cloud</h3>
+
+                <p>
+                    APIs, databases, authentication, cloud
+                    services and infrastructure.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CAPABILITIES -->
+
+<section class="capabilities">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="eyebrow">
+                Capabilities
+            </div>
+
+            <h2>
+                Built around your requirements.
+            </h2>
+
+        </div>
+
+
+        <div class="capability-grid">
+
+            <div class="capability">iOS & iPadOS</div>
+            <div class="capability">Android</div>
+            <div class="capability">Web Development</div>
+
+            <div class="capability">UI & UX Design</div>
+            <div class="capability">Backend Development</div>
+            <div class="capability">Cloud Services</div>
+
+            <div class="capability">User Accounts</div>
+            <div class="capability">Authentication</div>
+            <div class="capability">Databases</div>
+
+            <div class="capability">API Integrations</div>
+            <div class="capability">AI Features</div>
+            <div class="capability">Payments</div>
+
+            <div class="capability">Subscriptions</div>
+            <div class="capability">Push Notifications</div>
+            <div class="capability">Real-Time Data</div>
+
+            <div class="capability">Maps & Location</div>
+            <div class="capability">Analytics</div>
+            <div class="capability">Localization</div>
+
+            <div class="capability">App Store Optimization</div>
+            <div class="capability">App Store Submission</div>
+            <div class="capability">Google Play Submission</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROCESS -->
+
+<section id="process">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div class="eyebrow">
+                From Idea To Launch
+            </div>
+
+            <h2>
+                You bring the idea.
+                We help make it real.
+            </h2>
+
+            <p>
+                You don't need a finished technical specification.
+                Tell us what you want to create and what problem
+                you want to solve.
+            </p>
+
+        </div>
+
+
+        <div class="process">
+
+            <div class="process-step">
+                <div class="process-number">01</div>
+                <h3>Idea</h3>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">02</div>
+                <h3>Design</h3>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">03</div>
+                <h3>Development</h3>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">04</div>
+                <h3>Testing</h3>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">05</div>
+                <h3>Launch</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="cta" id="contact">
+
+    <div class="container cta-inner">
+
+        <div class="eyebrow">
+            Have An Idea?
+        </div>
+
+        <h2>
+            Let's build it.
+        </h2>
+
+        <p>
+            Need an iOS app, Android app, website or complete
+            digital platform? Tell us what you're thinking about.
+        </p>
+
+        <a
+            href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry&body=Hi%2C%0A%0AI%20would%20like%20to%20discuss%20a%20new%20project.%0A%0AProject%20idea%3A%0A%0A"
+            class="button"
+        >
+            Start a Project
+        </a>
+
+        <a
+            href="mailto:speakrclearly@gmail.com"
+            class="email"
+        >
+            speakrclearly@gmail.com
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <span>
+            &copy; <span id="year"></span> YOUR STUDIO.
+            All rights reserved.
+        </span>
+
+        <a href="mailto:speakrclearly@gmail.com">
+            Contact
+        </a>
+
+    </div>
+
+</footer>
+
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
