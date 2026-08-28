@@ -1,1083 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-    <title>App & Web Development | iOS, Android & Websites</title>
-
-    <meta name="description"
-          content="We design and develop iOS apps, Android apps, websites and digital products. From idea and UI/UX to development, APIs, payments, AI and launch.">
-
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:title"
-          content="We Turn Ideas Into Digital Products">
-
-    <meta property="og:description"
-          content="iOS apps, Android apps, websites and digital products - from idea to launch.">
-
-    <meta property="og:type" content="website">
-
-    <meta name="theme-color"
-          content="#0b0b0d"
-          media="(prefers-color-scheme: dark)">
-
-    <meta name="theme-color"
-          content="#ffffff"
-          media="(prefers-color-scheme: light)">
-
-    <style>
-        :root {
-            --background: #ffffff;
-            --secondary-background: #f5f5f7;
-            --card: rgba(255,255,255,.72);
-            --text: #1d1d1f;
-            --secondary-text: #6e6e73;
-            --border: rgba(0,0,0,.08);
-            --accent: #0071e3;
-            --shadow: 0 20px 60px rgba(0,0,0,.08);
-            --max-width: 1180px;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: #000000;
-                --secondary-background: #101012;
-                --card: rgba(28,28,30,.72);
-                --text: #f5f5f7;
-                --secondary-text: #a1a1a6;
-                --border: rgba(255,255,255,.10);
-                --accent: #2997ff;
-                --shadow: 0 20px 60px rgba(0,0,0,.35);
-            }
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro Text",
-                "Helvetica Neue",
-                Arial,
-                sans-serif;
-
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img,
-        video {
-            max-width: 100%;
-        }
-
-        .container {
-            width: min(calc(100% - 40px), var(--max-width));
-            margin-inline: auto;
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-            background: color-mix(
-                in srgb,
-                var(--background) 78%,
-                transparent
-            );
-
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-content {
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            font-size: 14px;
-        }
-
-        .nav-links a {
-            color: var(--secondary-text);
-            transition: color .2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text);
-        }
-
-        /* BUTTONS */
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-
-            min-height: 48px;
-            padding: 0 22px;
-
-            border-radius: 999px;
-
-            background: var(--accent);
-            color: white;
-
-            font-weight: 600;
-            font-size: 15px;
-
-            transition:
-                transform .2s ease,
-                opacity .2s ease;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            opacity: .92;
-        }
-
-        .button.secondary {
-            background: var(--secondary-background);
-            color: var(--text);
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 78vh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 100px 0;
-        }
-
-        .hero-inner {
-            max-width: 900px;
-            margin-inline: auto;
-        }
-
-        .eyebrow {
-            color: var(--accent);
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        h1 {
-            margin: 0;
-
-            font-size: clamp(50px, 8vw, 96px);
-            line-height: .98;
-            letter-spacing: -.055em;
-        }
-
-        .hero p {
-            max-width: 720px;
-            margin: 30px auto 34px;
-
-            font-size: clamp(18px, 2vw, 23px);
-            color: var(--secondary-text);
-        }
-
-        .hero-actions {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        /* GENERAL SECTIONS */
-
-        section {
-            padding: 110px 0;
-        }
-
-        .section-header {
-            max-width: 700px;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            margin: 0 0 14px;
-
-            font-size: clamp(36px, 5vw, 60px);
-            line-height: 1.05;
-            letter-spacing: -.045em;
-        }
-
-        .section-header p {
-            margin: 0;
-
-            color: var(--secondary-text);
-            font-size: 18px;
-        }
-
-        /* WORK */
-
-        #work {
-            background: var(--secondary-background);
-        }
-
-        .projects {
-            display: grid;
-            gap: 34px;
-        }
-
-        .project {
-            background: var(--background);
-
-            border: 1px solid var(--border);
-            border-radius: 34px;
-
-            overflow: hidden;
-
-            box-shadow: var(--shadow);
-        }
-
-        .project-content {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            min-height: 620px;
-        }
-
-        .project-info {
-            padding: clamp(35px, 6vw, 70px);
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .app-icon {
-            width: 82px;
-            height: 82px;
-
-            border-radius: 19px;
-            object-fit: cover;
-
-            box-shadow: 0 10px 25px rgba(0,0,0,.15);
-
-            margin-bottom: 26px;
-        }
-
-        .project-info h3 {
-            margin: 0 0 8px;
-
-            font-size: 42px;
-            letter-spacing: -.04em;
-        }
-
-        .project-tagline {
-            font-size: 21px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .project-description {
-            color: var(--secondary-text);
-            font-size: 16px;
-            margin: 0 0 25px;
-        }
-
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-
-            margin-bottom: 28px;
-        }
-
-        .feature {
-            padding: 7px 11px;
-
-            border-radius: 999px;
-
-            background: var(--secondary-background);
-
-            color: var(--secondary-text);
-
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .project-video {
-            padding: 50px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background:
-                radial-gradient(
-                    circle at 50% 40%,
-                    rgba(255,149,0,.17),
-                    transparent 55%
-                ),
-                var(--secondary-background);
-        }
-
-        .phone {
-            width: min(310px, 100%);
-            padding: 9px;
-
-            background: #111;
-            border-radius: 48px;
-
-            box-shadow:
-                0 30px 70px rgba(0,0,0,.3),
-                inset 0 0 0 1px rgba(255,255,255,.12);
-        }
-
-        .phone video {
-            width: 100%;
-            display: block;
-
-            border-radius: 40px;
-
-            aspect-ratio: 9 / 19.5;
-            object-fit: cover;
-
-            background: #000;
-        }
-
-        /* SERVICES */
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .service {
-            padding: 30px;
-
-            border: 1px solid var(--border);
-            border-radius: 24px;
-
-            background: var(--card);
-        }
-
-        .service-icon {
-            font-size: 30px;
-            margin-bottom: 30px;
-        }
-
-        .service h3 {
-            margin: 0 0 10px;
-            font-size: 20px;
-        }
-
-        .service p {
-            margin: 0;
-            color: var(--secondary-text);
-            font-size: 14px;
-        }
-
-        /* CAPABILITIES */
-
-        .capabilities {
-            background: var(--secondary-background);
-        }
-
-        .capability-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .capability {
-            padding: 18px 20px;
-
-            background: var(--background);
-
-            border: 1px solid var(--border);
-            border-radius: 16px;
-
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        /* PROCESS */
-
-        .process {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-        }
-
-        .process-step {
-            position: relative;
-        }
-
-        .process-number {
-            font-size: 13px;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .process-step h3 {
-            margin: 0;
-            font-size: 21px;
-        }
-
-        /* CTA */
-
-        .cta {
-            padding: 130px 0;
-
-            text-align: center;
-
-            background: var(--secondary-background);
-        }
-
-        .cta-inner {
-            max-width: 780px;
-            margin-inline: auto;
-        }
-
-        .cta h2 {
-            margin: 0;
-
-            font-size: clamp(44px, 7vw, 76px);
-            line-height: 1;
-            letter-spacing: -.05em;
-        }
-
-        .cta p {
-            margin: 25px auto 30px;
-
-            color: var(--secondary-text);
-            font-size: 19px;
-        }
-
-        .email {
-            display: block;
-
-            margin-top: 20px;
-
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* FOOTER */
-
-        footer {
-            padding: 28px 0;
-
-            border-top: 1px solid var(--border);
-
-            color: var(--secondary-text);
-            font-size: 13px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 900px) {
-
-            .project-content {
-                grid-template-columns: 1fr;
-            }
-
-            .project-video {
-                min-height: 600px;
-            }
-
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .capability-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .process {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 620px) {
-
-            .container {
-                width: min(calc(100% - 28px), var(--max-width));
-            }
-
-            .nav-links a:not(.nav-contact) {
-                display: none;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding: 70px 0;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .project {
-                border-radius: 25px;
-            }
-
-            .project-info {
-                padding: 32px 24px;
-            }
-
-            .project-info h3 {
-                font-size: 34px;
-            }
-
-            .project-video {
-                padding: 35px 25px;
-                min-height: auto;
-            }
-
-            .phone {
-                width: 270px;
-            }
-
-            .service-grid,
-            .capability-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-            }
-        }
-    </style>
-
-    <!-- SEO Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "YOUR STUDIO NAME",
-        "description": "iOS, Android, website and digital product development.",
-        "email": "mailto:speakrclearly@gmail.com",
-        "areaServed": "Worldwide",
-        "serviceType": [
-            "iOS App Development",
-            "Android App Development",
-            "Website Development",
-            "Web Application Development",
-            "UI UX Design",
-            "Backend Development"
-        ]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Egmonou Tech | Apps, Websites & Digital Products</title>
+  <meta name="description" content="Egmonou Tech designs and develops iOS apps, Android apps, websites, APIs, cloud platforms and digital products from idea to launch.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Egmonou Tech | We Turn Ideas Into Digital Products">
+  <meta property="og:description" content="Apps, websites and connected digital experiences - from idea to launch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://egmonou-tech.github.io/">
+  <meta name="theme-color" content="#000000">
+
+  <style>
+    :root{
+      --bg:#fff;--surface:#f5f5f7;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;
+      --line:rgba(0,0,0,.08);--accent:#0071e3;--max:1180px;--shadow:0 20px 60px rgba(0,0,0,.08)
     }
-    </script>
+    @media(prefers-color-scheme:dark){
+      :root{--bg:#000;--surface:#101012;--card:#1c1c1e;--text:#f5f5f7;--muted:#a1a1a6;
+      --line:rgba(255,255,255,.1);--accent:#2997ff;--shadow:0 20px 60px rgba(0,0,0,.35)}
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+    nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:-.03em}
+    .navlinks{display:flex;gap:24px;align-items:center;font-size:14px;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;background:var(--accent);color:white;font-weight:700}
+    .btn.secondary{background:var(--surface);color:var(--text)}.hero{min-height:74vh;display:grid;place-items:center;text-align:center;padding:90px 0}
+    .eyebrow{color:var(--accent);font-size:14px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+    h1{font-size:clamp(50px,8vw,94px);line-height:.98;letter-spacing:-.055em;margin:0}.hero p{max-width:760px;margin:28px auto 32px;color:var(--muted);font-size:clamp(18px,2vw,23px)}
+    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}section{padding:105px 0}.alt{background:var(--surface)}
+    .head{max-width:760px;margin-bottom:44px}.head h2{font-size:clamp(36px,5vw,58px);line-height:1.05;letter-spacing:-.045em;margin:0 0 14px}.head p{font-size:18px;color:var(--muted);margin:0}
+    .projects{display:grid;gap:32px}.project{background:var(--card);border:1px solid var(--line);border-radius:32px;overflow:hidden;box-shadow:var(--shadow)}
+    .project-inner{display:grid;grid-template-columns:.85fr 1.15fr;min-height:570px}.project:nth-child(even) .project-info{order:2}.project:nth-child(even) .media{order:1}
+    .project-info{padding:clamp(32px,5vw,62px);display:flex;flex-direction:column;justify-content:center}.project-info h3{font-size:40px;letter-spacing:-.04em;margin:0 0 6px}
+    .tagline{font-size:20px;font-weight:700;margin-bottom:14px}.desc{color:var(--muted);margin:0 0 22px}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+    .tag{font-size:12px;font-weight:700;color:var(--muted);background:var(--surface);padding:7px 11px;border-radius:999px}
+    .media{display:flex;align-items:center;justify-content:center;padding:42px;background:radial-gradient(circle at 50% 40%,rgba(0,113,227,.14),transparent 58%),var(--surface)}
+    .phone{width:min(275px,100%);padding:8px;border-radius:45px;background:#111;box-shadow:0 30px 70px rgba(0,0,0,.3)}
+    .phone video{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover;border-radius:38px;background:#000}
+    .webgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.webcard{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
+    .browser{aspect-ratio:16/9;border-radius:16px;background:linear-gradient(145deg,var(--surface),var(--bg));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);margin-bottom:22px;overflow:hidden}
+    .browser img{width:100%;height:100%;object-fit:cover}.webcard h3{font-size:26px;margin:0 0 5px}.webcard .tagline{font-size:16px}.webcard p{color:var(--muted)}
+    .moreapps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card);display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .mini strong{display:block}.mini span{font-size:12px;color:var(--muted)}.mini .arrow{color:var(--accent);font-weight:800}
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.service{padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--card)}.service h3{margin:0 0 8px}.service p{margin:0;color:var(--muted);font-size:14px}
+    .cap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cap div{padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:14px;font-weight:700;font-size:14px}
+    .process{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.step b{color:var(--accent);font-size:13px}.step h3{margin:8px 0 0}
+    .cta{text-align:center}.cta h2{font-size:clamp(44px,7vw,76px);letter-spacing:-.05em;line-height:1;margin:0}.cta p{color:var(--muted);font-size:19px;max-width:700px;margin:24px auto 30px}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:900px){.project-inner{grid-template-columns:1fr}.project:nth-child(even) .project-info,.project:nth-child(even) .media{order:initial}.webgrid,.services{grid-template-columns:repeat(2,1fr)}.moreapps,.cap{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:1fr;gap:26px}}
+    @media(max-width:620px){.container{width:min(calc(100% - 28px),var(--max))}.navlinks a:not(.contact){display:none}.hero{min-height:65vh;padding:70px 0}section{padding:78px 0}.project{border-radius:24px}.project-info{padding:30px 24px}.media{padding:30px 22px}.webgrid,.services,.moreapps,.cap{grid-template-columns:1fr}.foot{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
 </head>
-
-
 <body>
+<nav><div class="container nav"><a class="brand" href="#">EGMONOU TECH</a><div class="navlinks"><a href="#apps">Apps</a><a href="#web">Web</a><a href="#services">Services</a><a href="#process">Process</a><a class="btn contact" href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry">Contact</a></div></div></nav>
 
-<!-- NAV -->
+<header class="hero"><div class="container"><div class="eyebrow">Digital Product Development</div><h1>We turn ideas into digital products.</h1><p>We design and develop iOS apps, Android apps, websites and connected digital experiences - from the first idea to launch.</p><div class="actions"><a class="btn" href="#apps">See Our Work</a><a class="btn secondary" href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry">Start a Project</a></div></div></header>
 
-<nav>
-    <div class="container nav-content">
+<section id="apps" class="alt"><div class="container"><div class="head"><div class="eyebrow">Featured Mobile Work</div><h2>Products we've built.</h2><p>A selection of iOS products showing experience across utilities, finance, education, media, health, safety and connected experiences.</p></div><div class="projects">
 
-        <a href="#" class="logo">
-            YOUR STUDIO
-        </a>
+<!-- Duplicate/rename poster and video files exactly as shown below. Videos use preload=none. -->
+<article class="project"><div class="project-inner"><div class="project-info"><h3>ShadePilot</h3><div class="tagline">Stay safer in the heat.</div><p class="desc">Heat, UV, weather, hydration and sun-safety guidance designed to turn outdoor conditions into practical daily actions.</p><div class="tags"><span class="tag">Heat Risk</span><span class="tag">UV Index</span><span class="tag">Weather</span><span class="tag">Hydration</span><span class="tag">Sun Safety</span></div><a class="btn" href="#" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/shadepilot-poster.jpg"><source src="videos/shadepilot.mp4" type="video/mp4"></video></div></div></div></article>
 
-        <div class="nav-links">
-            <a href="#work">Work</a>
-            <a href="#services">Services</a>
-            <a href="#process">Process</a>
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Credit Card Control</h3><div class="tagline">Stay ahead of card payments.</div><p class="desc">A focused finance utility for tracking credit cards, payment dates and upcoming obligations in one clear experience.</p><div class="tags"><span class="tag">Finance</span><span class="tag">Payments</span><span class="tag">Reminders</span><span class="tag">Planning</span></div><a class="btn" href="https://apps.apple.com/us/app/credit-card-control/id6759989076" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/credit-card-control-poster.jpg"><source src="videos/credit-card-control.mp4" type="video/mp4"></video></div></div></div></article>
 
-            <a
-                href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry"
-                class="button nav-contact"
-            >
-                Contact
-            </a>
-        </div>
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Document Expiry Reminder</h3><div class="tagline">Never miss an important expiry.</div><p class="desc">A document utility designed to keep important expiry dates organized and easy to act on.</p><div class="tags"><span class="tag">Documents</span><span class="tag">Reminders</span><span class="tag">Organization</span><span class="tag">Privacy</span></div><a class="btn" href="https://apps.apple.com/us/app/document-expiry-reminder/id6756968613" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/document-expiry-poster.jpg"><source src="videos/document-expiry.mp4" type="video/mp4"></video></div></div></div></article>
 
-    </div>
-</nav>
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Covve</h3><div class="tagline">Private groups for family and people who matter.</div><p class="desc">A private group experience centered on staying connected with family and trusted circles.</p><div class="tags"><span class="tag">Groups</span><span class="tag">Family</span><span class="tag">Social</span><span class="tag">Private Sharing</span></div><a class="btn" href="https://apps.apple.com/us/app/covve-private-groups-family/id6773736538" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/covve-poster.jpg"><source src="videos/covve.mp4" type="video/mp4"></video></div></div></div></article>
 
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Speak R Clearly</h3><div class="tagline">Practice clearer R sounds.</div><p class="desc">A focused speech-practice experience designed around structured pronunciation exercises and progress.</p><div class="tags"><span class="tag">Education</span><span class="tag">Speech</span><span class="tag">Audio</span><span class="tag">Practice</span></div><a class="btn" href="https://apps.apple.com/us/app/speak-r-clearly/id6751442522" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/speak-r-clearly-poster.jpg"><source src="videos/speak-r-clearly.mp4" type="video/mp4"></video></div></div></div></article>
 
-<!-- HERO -->
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Animal POV</h3><div class="tagline">See the world from another perspective.</div><p class="desc">A visual experience exploring how the world can look through different animal perspectives.</p><div class="tags"><span class="tag">Camera</span><span class="tag">Visual</span><span class="tag">Education</span><span class="tag">Simulation</span></div><a class="btn" href="https://apps.apple.com/us/app/animal-pov/id6756701337" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/animal-pov-poster.jpg"><source src="videos/animal-pov.mp4" type="video/mp4"></video></div></div></div></article>
 
-<header class="hero">
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Dive Enhancer</h3><div class="tagline">Improve underwater media.</div><p class="desc">A focused photo and video utility for enhancing diving and underwater media.</p><div class="tags"><span class="tag">Photo</span><span class="tag">Video</span><span class="tag">Media</span><span class="tag">Enhancement</span></div><a class="btn" href="https://apps.apple.com/us/app/dive-enhancer-media-fix/id6748533313" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/dive-enhancer-poster.jpg"><source src="videos/dive-enhancer.mp4" type="video/mp4"></video></div></div></div></article>
 
-    <div class="container hero-inner">
+<article class="project"><div class="project-inner"><div class="project-info"><h3>Move Minder</h3><div class="tagline">Build better movement habits.</div><p class="desc">A movement-focused utility designed to encourage healthier breaks and more active daily routines.</p><div class="tags"><span class="tag">Movement</span><span class="tag">Habits</span><span class="tag">Reminders</span><span class="tag">Wellness</span></div><a class="btn" href="https://apps.apple.com/us/app/move-minder/id6759470340" target="_blank" rel="noopener">View on the App Store</a></div><div class="media"><div class="phone"><video controls playsinline preload="none" poster="images/move-minder-poster.jpg"><source src="videos/move-minder.mp4" type="video/mp4"></video></div></div></div></article>
 
-        <div class="eyebrow">
-            Digital Product Development
-        </div>
+</div></div></section>
 
-        <h1>
-            We turn ideas into digital products.
-        </h1>
+<section id="web"><div class="container"><div class="head"><div class="eyebrow">Selected Web Projects</div><h2>Web experiences at different scales.</h2><p>A selection of digital experiences we've worked on, spanning publishing, tourism, culture, international programs and motorsport.</p></div><div class="webgrid">
 
-        <p>
-            We design and develop iOS apps, Android apps,
-            websites and connected digital experiences -
-            from the first idea to launch.
-        </p>
+<article class="webcard"><div class="browser"><img src="images/ajel-web.jpg" alt="AJEL English website" onerror="this.style.display='none';this.parentElement.textContent='Add images/ajel-web.jpg';"></div><h3>AJEL English</h3><div class="tagline">Digital News & Publishing Platform</div><p>An English-language digital news experience covering Saudi Arabia and the world across news, business, sport, culture and lifestyle.</p><div class="tags"><span class="tag">Publishing</span><span class="tag">News</span><span class="tag">Content</span><span class="tag">SEO</span></div><a class="btn secondary" href="https://english.ajel.sa" target="_blank" rel="noopener">View Live Website</a></article>
 
-        <div class="hero-actions">
+<article class="webcard"><div class="browser"><img src="images/emirates4you-web.jpg" alt="Emirates4you website" onerror="this.style.display='none';this.parentElement.textContent='Add images/emirates4you-web.jpg';"></div><h3>Emirates4you</h3><div class="tagline">UAE Tours & Experiences Platform</div><p>A tourism platform for discovering tours, attractions and activities across the UAE, including destination discovery and booking journeys.</p><div class="tags"><span class="tag">Travel</span><span class="tag">Booking</span><span class="tag">E-Commerce</span><span class="tag">SEO</span></div><a class="btn secondary" href="https://emirates4you.com" target="_blank" rel="noopener">View Live Website</a></article>
 
-            <a href="#work" class="button">
-                See Our Work
-            </a>
+<article class="webcard"><div class="browser"><img src="images/abudhabi-festival-web.jpg" alt="Abu Dhabi Festival website" onerror="this.style.display='none';this.parentElement.textContent='Add images/abudhabi-festival-web.jpg';"></div><h3>Abu Dhabi Festival</h3><div class="tagline">Arts, Events & Ticketing Experience</div><p>A festival experience showcasing performances, artists and cultural programs with schedules, discovery and ticketing journeys.</p><div class="tags"><span class="tag">Events</span><span class="tag">Culture</span><span class="tag">Ticketing</span><span class="tag">UX</span></div><a class="btn secondary" href="https://www.abudhabifestival.ae" target="_blank" rel="noopener">View Live Website</a></article>
 
-            <a
-                href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry"
-                class="button secondary"
-            >
-                Start a Project
-            </a>
+<article class="webcard"><div class="browser"><img src="images/women2030-web.jpg" alt="Women2030 website" onerror="this.style.display='none';this.parentElement.textContent='Add images/women2030-web.jpg';"></div><h3>Women2030</h3><div class="tagline">Global Advocacy & Knowledge Platform</div><p>An international platform bringing together courses, tools, reports, stories, events and advocacy around gender equality and sustainable development.</p><div class="tags"><span class="tag">Global Platform</span><span class="tag">Education</span><span class="tag">Resources</span><span class="tag">Content</span></div><a class="btn secondary" href="https://www.women2030.org" target="_blank" rel="noopener">View Live Website</a></article>
 
-        </div>
+<article class="webcard"><div class="browser"><img src="images/yazeed-racing-web.jpg" alt="Yazeed Racing website" onerror="this.style.display='none';this.parentElement.textContent='Add images/yazeed-racing-web.jpg';"></div><h3>Yazeed Racing</h3><div class="tagline">Motorsport Digital Experience</div><p>A digital home for Saudi motorsport bringing together racing news, team updates, galleries and competition content.</p><div class="tags"><span class="tag">Motorsport</span><span class="tag">News</span><span class="tag">Brand</span><span class="tag">Content</span></div><a class="btn secondary" href="https://yazeedracing.com" target="_blank" rel="noopener">View Live Website</a></article>
 
-    </div>
+</div></div></section>
 
-</header>
+<section class="alt"><div class="container"><div class="head"><div class="eyebrow">More Apps</div><h2>More products, more problems solved.</h2><p>Additional iOS work across utilities, wellness, productivity, finance, media and everyday tools.</p></div><div class="moreapps">
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/noise-shield/id6744885118"><div><strong>Noise Shield</strong><span>Hearing & noise utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/hair-plan-regrowth-tracker/id6749689297"><div><strong>Hair Plan</strong><span>Routine & progress tracker</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/nicotine-zero-quit-vape-iqs/id6745785941"><div><strong>Nicotine Zero</strong><span>Quit & habit support</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/smellsense-olfactory-recovery/id6747363259"><div><strong>SmellSense</strong><span>Olfactory training</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/look-up/id6743024863"><div><strong>LOOK UP!!</strong><span>Everyday wellness utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/care-timeline/id6757227836"><div><strong>Care Timeline</strong><span>Care organization</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/inhalo-stress-relief/id6746204949"><div><strong>Inhalo</strong><span>Breathing & stress relief</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/number-row-keyboard/id1264816696"><div><strong>Number Row Keyboard</strong><span>Keyboard utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/custom-keyboard-ck/id1315978436"><div><strong>Custom Keyboard CK</strong><span>Custom input utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/shorts-videos-counter-60/id6744601692"><div><strong>Shorts Videos Counter 60</strong><span>Screen habit utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/20s-vision-break/id6741156325"><div><strong>20s Vision Break</strong><span>Eye-break reminders</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/bathslot/id6767845990"><div><strong>BathSlot</strong><span>Everyday utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/papersafe-home-documents/id6763880819"><div><strong>PaperSafe</strong><span>Home document organization</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/arabic-calc-fast-simple/id6740031309"><div><strong>Arabic Calc</strong><span>Fast calculator utility</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/minesweeper-strait-of-hormuz/id6761365512"><div><strong>Minesweeper: Strait of Hormuz</strong><span>Game experience</span></div><div class="arrow">↗</div></a>
+<a class="mini" target="_blank" rel="noopener" href="https://apps.apple.com/us/app/home-decision-rent-vs-buy/id6760699835"><div><strong>Home Decision</strong><span>Rent vs buy planning</span></div><div class="arrow">↗</div></a>
+</div></div></section>
 
+<section id="services"><div class="container"><div class="head"><div class="eyebrow">What We Build</div><h2>One team. Complete products.</h2><p>We build around the requirements of the product - from focused utilities to connected platforms.</p></div><div class="services">
+<div class="service"><h3>iOS Apps</h3><p>Native iPhone and iPad experiences, subscriptions, notifications, device features and App Store delivery.</p></div>
+<div class="service"><h3>Android Apps</h3><p>Modern Android products for phones and tablets, connected to the services your product needs.</p></div>
+<div class="service"><h3>Websites & Web Apps</h3><p>Responsive marketing sites, publishing platforms, portals, booking experiences and web applications.</p></div>
+<div class="service"><h3>Backend & Cloud</h3><p>APIs, databases, authentication, cloud services, real-time systems and third-party integrations.</p></div>
+</div></div></section>
 
-<!-- FEATURED WORK -->
+<section class="alt"><div class="container"><div class="head"><div class="eyebrow">Capabilities</div><h2>Built around your requirements.</h2></div><div class="cap">
+<div>iOS & iPadOS</div><div>Android</div><div>Responsive Web</div><div>UI & UX Design</div><div>Backend Development</div><div>Cloud Services</div><div>User Accounts & Authentication</div><div>Databases & APIs</div><div>AI Features</div><div>Payments & Subscriptions</div><div>Push Notifications</div><div>Maps & Location</div><div>Real-Time Data</div><div>Analytics</div><div>Localization</div><div>SEO & ASO</div><div>App Store Submission</div><div>Google Play Submission</div>
+</div></div></section>
 
-<section id="work">
+<section id="process"><div class="container"><div class="head"><div class="eyebrow">From Idea To Launch</div><h2>You bring the idea. We help make it real.</h2><p>You do not need a finished technical specification. Tell us what you want to build and the problem you want to solve.</p></div><div class="process"><div class="step"><b>01</b><h3>Idea</h3></div><div class="step"><b>02</b><h3>Design</h3></div><div class="step"><b>03</b><h3>Development</h3></div><div class="step"><b>04</b><h3>Testing</h3></div><div class="step"><b>05</b><h3>Launch</h3></div></div></div></section>
 
-    <div class="container">
+<section class="cta alt" id="contact"><div class="container"><div class="eyebrow">Have An Idea?</div><h2>Let's build it.</h2><p>Need an iOS app, Android app, website or complete digital platform? Tell us what you are thinking about.</p><a class="btn" href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry&body=Hi%2C%0A%0AI%20would%20like%20to%20discuss%20a%20new%20project.%0A%0AProject%20idea%3A%0A">Start a Project</a><p><a href="mailto:speakrclearly@gmail.com" style="color:var(--accent);font-weight:700">speakrclearly@gmail.com</a></p></div></section>
 
-        <div class="section-header">
-
-            <div class="eyebrow">
-                Featured Work
-            </div>
-
-            <h2>
-                Products we've built.
-            </h2>
-
-            <p>
-                A selection of iOS products we have designed,
-                developed and prepared for real users.
-            </p>
-
-        </div>
-
-
-        <!-- SHADEPILOT -->
-
-        <article class="project">
-
-            <div class="project-content">
-
-                <div class="project-info">
-
-                    <!--
-                    Replace with your real app icon:
-                    <img src="images/shadepilot-icon.png"
-                         alt="ShadePilot app icon"
-                         class="app-icon">
-                    -->
-
-                    <h3>ShadePilot</h3>
-
-                    <div class="project-tagline">
-                        Stay safer in the heat.
-                    </div>
-
-                    <p class="project-description">
-                        ShadePilot combines weather conditions,
-                        UV information, heat risk, hydration tools,
-                        sun exposure tracking and practical daily
-                        recommendations in a clean mobile experience.
-                    </p>
-
-                    <div class="features">
-                        <span class="feature">Heat Risk</span>
-                        <span class="feature">UV Index</span>
-                        <span class="feature">Weather</span>
-                        <span class="feature">Hydration</span>
-                        <span class="feature">Sun Safety</span>
-                    </div>
-
-                    <!-- Replace # with your real App Store URL -->
-
-                    <div>
-                        <a
-                            href="https://apps.apple.com/ae/app/shadepilot/id6795154143"
-                            target="_blank"
-                            rel="noopener"
-                            class="button"
-                        >
-                            View on the App Store
-
-
-                        </a>
-                    </div>
-
-                </div>
-
-
-                <div class="project-video">
-
-                    <div class="phone">
-
-                        <!--
-                        Replace videos/shadepilot.mp4
-                        with your actual demo video.
-                        -->
-
-                        <video
-    controls
-    playsinline
-    preload="none"
-    poster="images/shadepilot-poster.jpg"
-    aria-label="ShadePilot app demonstration"
->
-    <source
-        src="videos/shadepilot.mp4"
-        type="video/mp4"
-    >
-    Your browser does not support video playback.
-</video>
-                    
-                    </div>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!--
-        COPY THE PROJECT ABOVE FOR EACH ADDITIONAL APP.
-        -->
-
-    </div>
-
-</section>
-
-
-<!-- SERVICES -->
-
-<section id="services">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="eyebrow">
-                What We Build
-            </div>
-
-            <h2>
-                One team. Complete products.
-            </h2>
-
-            <p>
-                From a focused mobile utility to a complete
-                connected platform, we build around the needs
-                of your product.
-            </p>
-
-        </div>
-
-
-        <div class="service-grid">
-
-            <div class="service">
-                <div class="service-icon">iOS</div>
-
-                <h3>iOS Apps</h3>
-
-                <p>
-                    Native applications for iPhone and iPad
-                    with polished, modern user experiences.
-                </p>
-            </div>
-
-
-            <div class="service">
-                <div class="service-icon">Android</div>
-
-                <h3>Android Apps</h3>
-
-                <p>
-                    Modern Android applications designed for
-                    phones, tablets and connected services.
-                </p>
-            </div>
-
-
-            <div class="service">
-                <div class="service-icon">Web</div>
-
-                <h3>Websites</h3>
-
-                <p>
-                    Fast, responsive websites and web
-                    applications for desktop and mobile.
-                </p>
-            </div>
-
-
-            <div class="service">
-                <div class="service-icon">API</div>
-
-                <h3>Backend & Cloud</h3>
-
-                <p>
-                    APIs, databases, authentication, cloud
-                    services and infrastructure.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CAPABILITIES -->
-
-<section class="capabilities">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="eyebrow">
-                Capabilities
-            </div>
-
-            <h2>
-                Built around your requirements.
-            </h2>
-
-        </div>
-
-
-        <div class="capability-grid">
-
-            <div class="capability">iOS & iPadOS</div>
-            <div class="capability">Android</div>
-            <div class="capability">Web Development</div>
-
-            <div class="capability">UI & UX Design</div>
-            <div class="capability">Backend Development</div>
-            <div class="capability">Cloud Services</div>
-
-            <div class="capability">User Accounts</div>
-            <div class="capability">Authentication</div>
-            <div class="capability">Databases</div>
-
-            <div class="capability">API Integrations</div>
-            <div class="capability">AI Features</div>
-            <div class="capability">Payments</div>
-
-            <div class="capability">Subscriptions</div>
-            <div class="capability">Push Notifications</div>
-            <div class="capability">Real-Time Data</div>
-
-            <div class="capability">Maps & Location</div>
-            <div class="capability">Analytics</div>
-            <div class="capability">Localization</div>
-
-            <div class="capability">App Store Optimization</div>
-            <div class="capability">App Store Submission</div>
-            <div class="capability">Google Play Submission</div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROCESS -->
-
-<section id="process">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="eyebrow">
-                From Idea To Launch
-            </div>
-
-            <h2>
-                You bring the idea.
-                We help make it real.
-            </h2>
-
-            <p>
-                You don't need a finished technical specification.
-                Tell us what you want to create and what problem
-                you want to solve.
-            </p>
-
-        </div>
-
-
-        <div class="process">
-
-            <div class="process-step">
-                <div class="process-number">01</div>
-                <h3>Idea</h3>
-            </div>
-
-            <div class="process-step">
-                <div class="process-number">02</div>
-                <h3>Design</h3>
-            </div>
-
-            <div class="process-step">
-                <div class="process-number">03</div>
-                <h3>Development</h3>
-            </div>
-
-            <div class="process-step">
-                <div class="process-number">04</div>
-                <h3>Testing</h3>
-            </div>
-
-            <div class="process-step">
-                <div class="process-number">05</div>
-                <h3>Launch</h3>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="cta" id="contact">
-
-    <div class="container cta-inner">
-
-        <div class="eyebrow">
-            Have An Idea?
-        </div>
-
-        <h2>
-            Let's build it.
-        </h2>
-
-        <p>
-            Need an iOS app, Android app, website or complete
-            digital platform? Tell us what you're thinking about.
-        </p>
-
-        <a
-            href="mailto:speakrclearly@gmail.com?subject=New%20Project%20Inquiry&body=Hi%2C%0A%0AI%20would%20like%20to%20discuss%20a%20new%20project.%0A%0AProject%20idea%3A%0A%0A"
-            class="button"
-        >
-            Start a Project
-        </a>
-
-        <a
-            href="mailto:speakrclearly@gmail.com"
-            class="email"
-        >
-            speakrclearly@gmail.com
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="container footer-content">
-
-        <span>
-            &copy; <span id="year"></span> YOUR STUDIO.
-            All rights reserved.
-        </span>
-
-        <a href="mailto:speakrclearly@gmail.com">
-            Contact
-        </a>
-
-    </div>
-
-</footer>
-
-
-<script>
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
-</script>
-
+<footer><div class="container foot"><span>&copy; <span id="year"></span> Egmonou Tech. All rights reserved.</span><a href="mailto:speakrclearly@gmail.com">Contact</a></div></footer>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </body>
 </html>
